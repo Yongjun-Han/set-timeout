@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button">button</button>
+  <div id="menu"></div>
+
+  <script>
+    const menu = document.getElementById("menu");
+    const button = document.getElementById("button")
+
+    let size = 0;
+
+    menu.style.width = "200px";
+    menu.style.height = size + "px";
+    menu.style.backgroundColor = "#ddd";
+    menu.style.borderTop = "2px solid black"
+
+    button.addEventListener("click", () => {
+
+      const timer = setInterval(() => {
+        size++;
+        menu.style.height = size + "px";
+
+        if(size === 200) {
+          clearInterval(timer)
+          
+          let rotateVaule = 0;
+          
+          const rotateTimer = setInterval(() => {
+            rotateVaule++
+            menu.style.transform = `rotate(${rotateVaule}deg)`
+            if(rotateVaule === 360) {
+              clearInterval(rotateTimer)
+            }
+          }, 16);
+        }
+      }, 3);
+
+    })
+
+    
+  </script>
+</body>
+</html>
